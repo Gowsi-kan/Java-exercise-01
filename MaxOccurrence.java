@@ -143,5 +143,7 @@ public class MaxOccurrence {
             System.out.println("Output :  " + m + " " + max );
         else
             System.out.println("Output : space " + max );
+		
+		System.out.println("Thanks You);
     }
 }
