@@ -1,78 +1,72 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class HashNode<K,V>
-{
+class HashNode<K, V> {
     K key;
     V value;
     final int hashCode;
-    HashNode<K,V> next;
-    HashNode(K k,V v,int h)
-    {
+    HashNode<K, V> next;
+
+    HashNode(K k, V v, int h) {
         key = k;
         value = v;
         hashCode = h;
     }
 }
 
-class CustomHashTable<K,V>
-{
-    private ArrayList<HashNode<K,V>> array;
+class CustomHashTable<K, V> {
+    private ArrayList<HashNode<K, V>> array;
     private int numArray;
     private int size;
 
-    CustomHashTable()
-    {
+    CustomHashTable() {
         array = new ArrayList<>();
         numArray = 10;
         size = 0;
 
-        for (int i =0 ; i<numArray ; i++)
+        for (int i = 0; i < numArray; i++)
             array.add(null);
     }
 
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
-    public boolean isEmpty() { return size() == 0; }
+    public boolean isEmpty() {
+        return size() == 0;
+    }
 
-    private int hashCode(K key)
-    {
+    private int hashCode(K key) {
         return key.hashCode();
     }
 
-    public int getArrayIndex(K key)
-    {
+    public int getArrayIndex(K key) {
         int h = hashCode(key);
         return h % numArray;
     }
 
-    public V get(K key)
-    {
+    public V get(K key) {
         int arrayIndex = getArrayIndex(key);
         int h = hashCode(key);
 
-        HashNode<K,V> head = array.get(arrayIndex);
+        HashNode<K, V> head = array.get(arrayIndex);
 
-        while ( head != null)
-        {
-            if (head.key.equals(key) && h == head.hashCode )
+        while (head != null) {
+            if (head.key.equals(key) && h == head.hashCode)
                 return head.value;
             head = head.next;
         }
         return null;
     }
 
-    public void add(K key,V value)
-    {
+    public void add(K key, V value) {
         int arrayIndex = getArrayIndex(key);
         int h = hashCode(key);
 
-        HashNode<K,V> head = array.get(arrayIndex);
+        HashNode<K, V> head = array.get(arrayIndex);
 
-        while ( head != null)
-        {
-            if (head.key.equals(key) && h == head.hashCode )
-            {
+        while (head != null) {
+            if (head.key.equals(key) && h == head.hashCode) {
                 head.value = value;
                 return;
             }
@@ -81,9 +75,9 @@ class CustomHashTable<K,V>
 
         size++;
         head = array.get(arrayIndex);
-        HashNode<K,V> newNode = new HashNode<>(key, value, h);
+        HashNode<K, V> newNode = new HashNode<>(key, value, h);
         newNode.next = head;
-        array.set(arrayIndex,newNode);
+        array.set(arrayIndex, newNode);
     }
 }
 
@@ -145,5 +139,6 @@ public class MaxOccurrence {
             System.out.println("Output : space " + max );
 		
 		System.out.println("Thanks You);
+        //It is Edited
     }
 }
